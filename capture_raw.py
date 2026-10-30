@@ -27,6 +27,7 @@ import select
 import socket
 import struct
 import time
+import config
 
 
 log = logging.getLogger(__name__)
@@ -73,7 +74,7 @@ def _is_cdp_frame(frame: bytes) -> bool:
     where the two bytes at offset 12 carry the frame length, not an
     Ethertype, making Ethertype matching unreliable for CDP.
     """
-    if len(frame) < _MIN_FRAME_SIZE:
+    if len(frame) < _MIN_FRAME_SIZE or not config.USE_CDP:
         return False
 
     return frame[0:6] == _CDP_DST_MAC

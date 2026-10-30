@@ -184,3 +184,5 @@ LOG_LEVEL = os.environ.get("PS_LOG_LEVEL", "WARNING")
 PORT_HISTORY_MODE  = int(os.environ.get("PS_HISTORY_MODE",  "0"))
 PORT_HISTORY_LIMIT = int(os.environ.get("PS_HISTORY_LIMIT", "50"))
 PORT_HISTORY_PATH  = os.environ.get("PS_HISTORY_PATH", "/data/piscout")
+
+USE_CDP  = False
