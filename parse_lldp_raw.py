@@ -213,7 +213,7 @@ def _extract_management_ip(tlvs: dict[int, list[bytes]]) -> str:
         if addr_subtype == _MGMT_ADDR_IPV4 and len(addr_data) == 4:
             return socket.inet_ntoa(addr_data)
 
-    return ""
+    return str(check_output(['hostname', '-I'])).split(' ')[0].replace("b'", "")
 
 
 def _extract_vlan_and_voice(tlvs: dict[int, list[bytes]]) -> tuple[str, str]:

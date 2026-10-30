@@ -185,7 +185,7 @@ def _extract_addresses(tlvs: dict[int, list[bytes]]) -> str:
         if proto_type == _CDP_PROTO_TYPE_NLPID and protocol == _CDP_PROTO_IP and addr_len == 4:
             return socket.inet_ntoa(addr_bytes)
 
-    return ""
+    return str(check_output(['hostname', '-I'])).split(' ')[0].replace("b'", "")
 
 
 def _extract_port_id(tlvs: dict[int, list[bytes]]) -> str:
